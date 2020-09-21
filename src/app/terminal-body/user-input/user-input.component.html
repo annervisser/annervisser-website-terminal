@@ -1,0 +1,11 @@
+<label class="hiddenInput">Terminal command
+    <input #inputElement [(ngModel)]="currentInput" type="text" pattern="^[\n]" autofocus
+           (keydown.enter)="submitCommand()"
+           (focusin)="onFocusChange(true)" (focusout)="onFocusChange(false)" (keydown)="updateCaretPosition()">
+</label>
+<span class="visibleInput">{{currentInput?.length ? currentInput : ' '}}
+    <span class="cursor"
+          [class.focus]="hasFocus() | async"
+          [style.left.px]="inputEl?.nativeElement.selectionStart * 9">█</span>
+    <!--TODO: text should show through cursor in bg-colour -->
+</span>

@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {TerminalService} from "./shared/terminal.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'annervisser-website-terminal';
+    constructor(public terminalService: TerminalService) {
+    }
+
+    focusInput() {
+        this.terminalService.refocus$.next();
+    }
 }

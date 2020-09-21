@@ -1,0 +1,32 @@
+.hiddenInput {
+    position: fixed;
+    left: -600px;
+
+    &, input {
+        width: 0;
+    }
+}
+
+.visibleInput {
+    position: relative;
+
+    .cursor {
+        position: absolute;
+        top: 0;
+        left: 0;
+        animation: blink-animation 1.2s steps(2, start) infinite;
+
+        @keyframes blink-animation {
+            to {
+                visibility: hidden;
+            }
+        }
+
+        &:not(.focus) {
+            animation: none;
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: white;
+        }
+    }
+}

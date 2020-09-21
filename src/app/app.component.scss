@@ -1,0 +1,19 @@
+@import "~src/app/style/variables";
+
+.wrapper {
+    height: 100%;
+    display: grid;
+    place-content: center;
+}
+
+.terminal {
+    background: $terminal-body-color;
+    box-shadow: black 0 0 20px;
+    width: 740px;
+    height: 470px;
+    border-radius: 6px 6px 0 0;
+    overflow: hidden;
+
+    white-space: pre;
+}
+
