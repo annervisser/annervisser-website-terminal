@@ -1,8 +1,10 @@
-import {Component, ComponentFactoryResolver, OnInit, Type, ViewChild} from '@angular/core';
-import {CommandHostDirective} from "./command-host.directive";
-import {NameCommandComponent} from "./commands/name-command/name-command.component";
-import {CommandOutput} from "./command-output";
-import {EchoCommandComponent} from "./commands/echo-command.component";
+import {Component, ComponentFactoryResolver, ComponentRef, OnInit, Type, ViewChild} from '@angular/core';
+import {CommandHostDirective} from './command-host.directive';
+import {NameCommandComponent} from './commands/name-command/name-command.component';
+import {CommandOutput} from './command-output';
+import {EchoCommandComponent} from './commands/echo-command.component';
+import {TerminalService} from '../shared/terminal.service';
+import {UserInputComponent} from './user-input/user-input.component';
 
 @Component({
     selector: 'app-terminal-body',
@@ -13,19 +15,55 @@ export class TerminalBodyComponent implements OnInit {
 
     @ViewChild(CommandHostDirective, {static: true}) commandHost: CommandHostDirective;
 
-    constructor(private componentFactoryResolver: ComponentFactoryResolver) {
+    constructor(private componentFactoryResolver: ComponentFactoryResolver,
+                private terminalService: TerminalService) {
     }
 
     ngOnInit(): void {
-        this.loadComponent(NameCommandComponent, {name: 'test'});
-        this.loadComponent(EchoCommandComponent, "echo command output");
+        this.loadCommandComponent(EchoCommandComponent,
+            `Welcome to AnnerSH 00.01\nLocal time is ${(new Date()).toISOString()}\nType 'help' to see available commands`);
+        this.loadInputComponent();
+
+        this.terminalService.commands$.subscribe((command) => {
+            const commandParts: string[] = command.split(' ');
+            const args = commandParts.slice(1).join(' ');
+
+            switch (commandParts[0]) {
+                case 'echo':
+                    this.loadCommandComponent(EchoCommandComponent, args);
+                    break;
+                case 'name':
+                    this.loadCommandComponent(NameCommandComponent, {name: args});
+                    break;
+                case 'clear':
+                    this.clearTerminal();
+                    break;
+                default:
+                    // TODO unknown command
+                    this.loadCommandComponent(EchoCommandComponent, 'Unknown command');
+                    break;
+            }
+            this.loadInputComponent();
+        });
     }
 
-    loadComponent(component: Type<CommandOutput>, data) {
+    private loadComponent<T>(component: Type<T>): ComponentRef<T> {
         const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
-        const componentRef = this.commandHost.viewContainerRef.createComponent<CommandOutput>(componentFactory);
-        componentRef.location.nativeElement.classList.add('commandComponent');
+        return this.commandHost.viewContainerRef.createComponent<T>(componentFactory);
+    }
+
+    private clearTerminal(): void {
+        this.commandHost.viewContainerRef.clear();
+    }
+
+    private loadCommandComponent(component: Type<CommandOutput>, data): void {
+        const componentRef = this.loadComponent(component);
         componentRef.instance.data = data;
+    }
+
+    private loadInputComponent(): void {
+        this.loadComponent(UserInputComponent);
+        this.terminalService.refocus$.next();
     }
 
 }

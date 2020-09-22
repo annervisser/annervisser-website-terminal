@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {TerminalService} from "./shared/terminal.service";
+import {TerminalService} from './shared/terminal.service';
 
 @Component({
     selector: 'app-root',
@@ -10,7 +10,7 @@ export class AppComponent {
     constructor(public terminalService: TerminalService) {
     }
 
-    focusInput() {
+    focusInput(): void {
         this.terminalService.refocus$.next();
     }
 }

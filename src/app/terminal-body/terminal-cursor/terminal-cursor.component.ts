@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {TerminalService} from "../../shared/terminal.service";
-import {Subject} from "rxjs";
+import {TerminalService} from '../../shared/terminal.service';
+import {Subject} from 'rxjs';
 
 @Component({
     selector: 'app-terminal-cursor',
