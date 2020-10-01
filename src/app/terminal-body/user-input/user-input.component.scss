@@ -5,10 +5,8 @@
 .hiddenInput {
     position: fixed;
     left: -600px;
-
-    &, input {
-        width: 0;
-    }
+    overflow: hidden;
+    width: 0;
 }
 
 .visibleInput {
@@ -24,6 +22,10 @@
             to {
                 visibility: hidden;
             }
+        }
+
+        &.inputActive {
+            animation: none;
         }
 
         &:not(.focus) {

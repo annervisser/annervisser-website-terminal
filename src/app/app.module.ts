@@ -10,6 +10,8 @@ import {NameCommandComponent} from './terminal-body/commands/name-command/name-c
 import {EchoCommandComponent} from './terminal-body/commands/echo-command.component';
 import {UserInputComponent} from './terminal-body/user-input/user-input.component';
 import {FormsModule} from '@angular/forms';
+import {ContactCommandComponent} from './terminal-body/commands/contact-command.component';
+import {ManCommandComponent} from './terminal-body/commands/man-command.component';
 
 @NgModule({
     declarations: [
@@ -20,6 +22,8 @@ import {FormsModule} from '@angular/forms';
         CommandHostDirective,
         NameCommandComponent,
         EchoCommandComponent,
+        ContactCommandComponent,
+        ManCommandComponent,
         UserInputComponent
     ],
     imports: [

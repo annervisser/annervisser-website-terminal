@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CommandOutput} from '../../command-output';
 
 @Component({
@@ -7,8 +7,6 @@ import {CommandOutput} from '../../command-output';
     styleUrls: ['./name-command.component.scss']
 })
 export class NameCommandComponent implements OnInit, CommandOutput {
-
-    @Input()
     data: any;
 
     constructor() {

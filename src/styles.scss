@@ -17,3 +17,24 @@ html, body {
     font-weight: bold;
     color: $terminal-font-blue;
 }
+
+a {
+    &, &:visited {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    &:hover, &:focus, &:active {
+        color: inherit;
+        text-decoration: underline;
+    }
+
+    &::before, &::after {
+        content: '<';
+        display: inline-block;
+    }
+
+    &::after {
+        content: '>';
+    }
+}

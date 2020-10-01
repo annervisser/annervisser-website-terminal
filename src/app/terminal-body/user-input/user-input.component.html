@@ -4,15 +4,15 @@
     <label class="hiddenInput">Terminal command
         <input #inputElement [(ngModel)]="currentInput" type="text" pattern="^[\n]" autofocus
                (focusin)="onFocusChange(true)" (focusout)="onFocusChange(false)"
-               (keydown.enter)="submitCommand()" (keydown)="updateCaretPosition()">
+               (keydown.enter)="submitCommand()" (keydown)="onKeyDown()">
     </label>
 
     <span class="visibleInput">
         {{currentInput}}
         <span class="cursor"
-              [class.focus]="hasFocus | async"
+              [class.focus]="hasFocus() | async" [class.inputActive]="inputElement.disabled || inputActive"
               [style.position]="currentInput?.length ? 'absolute' : 'relative'"
-              [style.left.px]="inputEl?.nativeElement.selectionStart * 9">█
+              [style.left.px]="inputElement.selectionStart * 9">█
             <!--Set to position relative when empty to prevent issues with sizing-->
             <!--9px seems to be the exact right amount for one character, since ch (width of 0) works out to be 8.67 and the letter-spacing is 0.34px;-->
         </span>
@@ -20,4 +20,5 @@
     </span>
 </ng-container>
 
-<ng-template #inputComplete>{{currentInput}}<br></ng-template>
+<ng-template #inputComplete>{{currentInput}}</ng-template>
+<br>

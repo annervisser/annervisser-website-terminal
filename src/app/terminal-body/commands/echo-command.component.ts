@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CommandOutput} from '../command-output';
 
 @Component({
@@ -7,7 +7,6 @@ import {CommandOutput} from '../command-output';
     styles: []
 })
 export class EchoCommandComponent implements OnInit, CommandOutput {
-    @Input()
     data: any;
 
     constructor() {

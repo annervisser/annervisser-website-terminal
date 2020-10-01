@@ -5,6 +5,8 @@ import {CommandOutput} from './command-output';
 import {EchoCommandComponent} from './commands/echo-command.component';
 import {TerminalService} from '../shared/terminal.service';
 import {UserInputComponent} from './user-input/user-input.component';
+import {ContactCommandComponent} from './commands/contact-command.component';
+import {ManCommandComponent} from './commands/man-command.component';
 
 @Component({
     selector: 'app-terminal-body',
@@ -29,6 +31,7 @@ export class TerminalBodyComponent implements OnInit {
             const args = commandParts.slice(1).join(' ');
 
             switch (commandParts[0]) {
+                // TODO make this an object
                 case 'echo':
                     this.loadCommandComponent(EchoCommandComponent, args);
                     break;
@@ -37,6 +40,12 @@ export class TerminalBodyComponent implements OnInit {
                     break;
                 case 'clear':
                     this.clearTerminal();
+                    break;
+                case 'contact':
+                    this.loadCommandComponent(ContactCommandComponent);
+                    break;
+                case 'man':
+                    this.loadCommandComponent(ManCommandComponent, args);
                     break;
                 default:
                     // TODO unknown command
@@ -56,7 +65,7 @@ export class TerminalBodyComponent implements OnInit {
         this.commandHost.viewContainerRef.clear();
     }
 
-    private loadCommandComponent(component: Type<CommandOutput>, data): void {
+    private loadCommandComponent(component: Type<CommandOutput>, data = null): void {
         const componentRef = this.loadComponent(component);
         componentRef.instance.data = data;
     }
