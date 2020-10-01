@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {CommandOutput} from '../command-output';
+import {Component} from '@angular/core';
+import {CommandOutput} from '../../shared/command-output';
 import {TerminalService} from '../../shared/terminal.service';
 
 @Component({
@@ -8,13 +8,10 @@ import {TerminalService} from '../../shared/terminal.service';
     <a (click)="enterCommand('echo hello')">echo</a><br>`,
     styles: []
 })
-export class ManCommandComponent implements OnInit, CommandOutput {
+export class ManCommandComponent implements CommandOutput {
     data: any;
 
     constructor(private terminalService: TerminalService) {
-    }
-
-    ngOnInit(): void {
     }
 
     enterCommand(command: string): void {

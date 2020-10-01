@@ -1,7 +1,7 @@
 import {Component, ComponentFactoryResolver, ComponentRef, OnInit, Type, ViewChild} from '@angular/core';
-import {CommandHostDirective} from './command-host.directive';
-import {NameCommandComponent} from './commands/name-command/name-command.component';
-import {CommandOutput} from './command-output';
+import {CommandHostDirective} from '../shared/command-host.directive';
+import {NameCommandComponent} from './commands/name-command.component';
+import {CommandOutput} from '../shared/command-output';
 import {EchoCommandComponent} from './commands/echo-command.component';
 import {TerminalService} from '../shared/terminal.service';
 import {UserInputComponent} from './user-input/user-input.component';
@@ -10,8 +10,17 @@ import {ManCommandComponent} from './commands/man-command.component';
 
 @Component({
     selector: 'app-terminal-body',
-    templateUrl: './terminal-body.component.html',
-    styleUrls: ['./terminal-body.component.scss']
+    template: '<ng-template appCommandHost></ng-template>',
+    styles: [`
+        :host {
+            display: block;
+            color: white;
+            font-family: 'Ubuntu Mono', monospace;
+            font-size: 13pt;
+            letter-spacing: 0.34px;
+            padding: 2px 4px;
+        }` // TODO get font from google fonts
+    ]
 })
 export class TerminalBodyComponent implements OnInit {
 

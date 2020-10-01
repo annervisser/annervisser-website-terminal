@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {CommandOutput} from '../command-output';
+import {Component} from '@angular/core';
+import {CommandOutput} from '../../shared/command-output';
 
 @Component({
     selector: 'app-contact-command',
@@ -10,13 +10,6 @@ import {CommandOutput} from '../command-output';
     <br>`,
     styles: []
 })
-export class ContactCommandComponent implements OnInit, CommandOutput {
+export class ContactCommandComponent implements CommandOutput {
     data: any;
-
-    constructor() {
-    }
-
-    ngOnInit(): void {
-    }
-
 }
