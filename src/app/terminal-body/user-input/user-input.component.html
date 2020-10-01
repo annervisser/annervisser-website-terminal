@@ -2,7 +2,8 @@
 
 <ng-container *ngIf="!inputFinished; else inputComplete">
     <label class="hiddenInput">Terminal command
-        <input #inputElement [(ngModel)]="currentInput" type="text" pattern="^[\n]" autofocus
+        <input #inputElement [(ngModel)]="currentInput" type="text" pattern="^[\n]" autofocus autocapitalize="off"
+               autocomplete="off"
                (focusin)="onFocusChange(true)" (focusout)="onFocusChange(false)"
                (keydown.enter)="submitCommand()" (keydown)="onKeyDown()">
     </label>
