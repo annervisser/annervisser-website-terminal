@@ -1,11 +1,10 @@
 import {Component} from '@angular/core';
-import {CommandOutput} from '@shared/command.service';
+import {CommandOutput} from '@shared/command-output';
 
 @Component({
     selector: 'app-echo-command',
-    template: `{{data}}<br>`,
+    template: `{{data.join('')}}<br>`,
     styles: []
 })
-export class EchoCommandComponent implements CommandOutput {
-    data: any;
+export class EchoCommandComponent extends CommandOutput {
 }

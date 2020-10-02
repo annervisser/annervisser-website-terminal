@@ -5,12 +5,9 @@ import {UserInputComponent} from '../terminal-body/user-input/user-input.compone
 import {TerminalService} from './terminal.service';
 import {ContactCommandComponent} from '../terminal-body/commands/contact-command.component';
 import {ManCommandComponent} from '../terminal-body/commands/man-command.component';
+import {CommandOutput} from '@shared/command-output';
 
-export interface CommandOutput {
-    data: any;
-}
-
-export interface Command {
+interface Command {
     aliases: string[];
     component?: Type<CommandOutput>;
     clear?: boolean;

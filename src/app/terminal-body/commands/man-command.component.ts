@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {TerminalService} from '@shared/terminal.service';
-import {CommandOutput} from '@shared/command.service';
+import {CommandOutput} from '@shared/command-output';
 
 @Component({
     selector: 'app-man-command',
@@ -9,10 +9,9 @@ import {CommandOutput} from '@shared/command.service';
     <br>`,
     styles: []
 })
-export class ManCommandComponent implements CommandOutput {
-    data: any;
-
+export class ManCommandComponent extends CommandOutput {
     constructor(private terminalService: TerminalService) {
+        super();
     }
 
     enterCommand(command: string): void {

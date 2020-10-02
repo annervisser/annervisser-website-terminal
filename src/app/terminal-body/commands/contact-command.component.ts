@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {CommandOutput} from '@shared/command.service';
+import {CommandOutput} from '@shared/command-output';
 
 @Component({
     selector: 'app-contact-command',
@@ -10,6 +10,5 @@ import {CommandOutput} from '@shared/command.service';
     <br>`,
     styles: []
 })
-export class ContactCommandComponent implements CommandOutput {
-    data: any;
+export class ContactCommandComponent extends CommandOutput {
 }
