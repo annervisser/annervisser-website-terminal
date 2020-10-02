@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {TerminalService} from '../../shared/terminal.service';
+import {TerminalService} from '@shared/terminal.service';
 import {take, takeUntil} from 'rxjs/operators';
 
 @Component({
