@@ -8,6 +8,10 @@ html, body {
     font-size: 16px;
 }
 
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
 .clr-green {
     font-weight: bold;
     color: $terminal-font-green;

@@ -4,8 +4,8 @@ import {CommandOutput} from '@shared/command-output';
 
 @Component({
     selector: 'app-man-command',
-    template: `HALP<br>
-    <a (click)="enterCommand('echo hello')">echo</a>
+    template: `Commands:<br>
+    - <a (click)="enterCommand('contact')">contact</a>
     <br>`,
     styles: []
 })

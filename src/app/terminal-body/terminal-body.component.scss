@@ -1,0 +1,16 @@
+@import "~src/app/style/variables";
+
+:host {
+    display: block;
+    color: white;
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 13pt;
+    letter-spacing: 0.34px;
+    padding: 1px;
+
+    background-color: $terminal-body-color;
+    border: 1px solid $terminal-border-color;
+
+    height: $terminal-height - $terminal-top-bar-height;
+    overflow-y: scroll;
+}

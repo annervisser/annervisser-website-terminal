@@ -15,8 +15,10 @@ export class UserInputComponent implements OnInit {
     private timeouts: number[] = [];
     private inputActiveTimeout: number;
 
-    constructor(private terminalService: TerminalService) {
+    constructor(private terminalService: TerminalService,
+                private elementRef: ElementRef) {
         this.terminalService.input$
+            .pipe(takeUntil(this.terminalService.commands$))
             .pipe(take(1))
             .subscribe((command: string) => {
                 this.inputEl.nativeElement.disabled = true;
@@ -28,7 +30,6 @@ export class UserInputComponent implements OnInit {
                 }
 
                 finishCommandPromise.then(() => {
-                    this.currentInput = command; // just in case something goes wrong
                     this.inputFinished = true;
                     this.terminalService.commands$.next(this.currentInput);
                     this.clearTimeouts();
@@ -39,6 +40,8 @@ export class UserInputComponent implements OnInit {
     hasFocus = () => this.terminalService.hasFocus$;
 
     ngOnInit(): void {
+        this.elementRef.nativeElement.scrollIntoView();
+
         setTimeout(() => {
             this.terminalService.refocus$
                 .pipe(takeUntil(this.terminalService.commands$))
@@ -54,6 +57,13 @@ export class UserInputComponent implements OnInit {
         // Pre-set this value to prevent animation
         this.inputFinished = true;
         this.terminalService.input$.next(this.currentInput);
+    }
+
+    cancelCommand(): void {
+        this.inputFinished = true;
+        this.currentInput += '^C';
+        this.clearTimeouts();
+        this.terminalService.commands$.next(null);
     }
 
     animateInput(input: string, callback: () => void): void {

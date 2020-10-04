@@ -1,25 +1,27 @@
 <span class="clr-green">user@annervisser.nl</span>:<span class="clr-blue">~</span>$
 
-<ng-container *ngIf="!inputFinished; else inputComplete">
+<ng-container *ngIf="!inputFinished; else currentInputDisplay">
     <label class="hiddenInput">Terminal command
         <input #inputElement [(ngModel)]="currentInput" type="text" pattern="^[\n]" autofocus autocapitalize="off"
                autocomplete="off"
                (focusin)="onFocusChange(true)" (focusout)="onFocusChange(false)"
-               (keydown.enter)="submitCommand()" (keydown)="onKeyDown()">
+               (keydown.enter)="submitCommand()" (keydown)="onKeyDown()"
+               (keydown.control.c)="cancelCommand()">
     </label>
 
     <span class="visibleInput">
-        {{currentInput}}
+        <ng-container *ngTemplateOutlet="currentInputDisplay"></ng-container>
         <span class="cursor"
               [class.focus]="hasFocus() | async" [class.inputActive]="inputElement.disabled || inputActive"
-              [style.position]="currentInput?.length ? 'absolute' : 'relative'"
               [style.left.px]="inputElement.selectionStart * 9">█
-            <!--Set to position relative when empty to prevent issues with sizing-->
             <!--9px seems to be the exact right amount for one character, since ch (width of 0) works out to be 8.67 and the letter-spacing is 0.34px;-->
         </span>
         <!--TODO: text should show through cursor in bg-colour -->
     </span>
 </ng-container>
 
-<ng-template #inputComplete>{{currentInput}}</ng-template>
+<ng-template #currentInputDisplay>
+    <span style="white-space: pre">{{currentInput || '&#8203;'}}</span>
+    <!-- 0-width space prevents spacing issues on empty value-->
+</ng-template>
 <br>

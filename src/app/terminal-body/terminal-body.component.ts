@@ -4,17 +4,8 @@ import {CommandService} from '@shared/command.service';
 
 @Component({
     selector: 'app-terminal-body',
-    template: '<ng-template appCommandHost></ng-template>',
-    styles: [`
-        :host {
-            display: block;
-            color: white;
-            font-family: 'Ubuntu Mono', monospace;
-            font-size: 13pt;
-            letter-spacing: 0.34px;
-            padding: 2px 4px;
-        }` // TODO get font from google fonts
-    ]
+    template: '<ng-template appCommandHost></ng-template><div style="height: 1px;"></div>',
+    styleUrls: ['./terminal-body.component.scss']
 })
 export class TerminalBodyComponent implements OnInit {
 

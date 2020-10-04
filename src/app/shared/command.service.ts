@@ -51,20 +51,27 @@ export class CommandService {
             `Welcome to AnnerSH 00.01\nLocal time is ${(new Date()).toISOString()}\nType 'help' to see available commands`);
         this.loadInputComponent();
 
-        this.terminalService.commands$.subscribe((input) => {
-            const commandParts: string[] = input.split(' ');
-            const args = commandParts.slice(1);
-
-            const command = commands.find((c) => c.aliases.includes(commandParts[0]));
-            if (!command) {
-                // TODO unknown command
-                this.loadCommandComponent(EchoCommandComponent, 'Unknown command');
-            } else {
-                this.executeCommand(command, args);
+        this.terminalService.commands$.subscribe((input: string) => {
+            input = input ? input.trim() : '';
+            if (input) {
+                this.parseInput(input);
             }
 
             this.loadInputComponent();
         });
+    }
+
+    private parseInput(input: string): void {
+        const commandParts: string[] = input.split(' ');
+        const args = commandParts.slice(1);
+
+        const command = commands.find((c) => c.aliases.includes(commandParts[0]));
+        if (!command) {
+            // TODO unknown command
+            this.loadCommandComponent(EchoCommandComponent, 'Unknown command');
+        } else {
+            this.executeCommand(command, args);
+        }
     }
 
     private executeCommand(command: Command, args: string[]): void {
@@ -85,9 +92,9 @@ export class CommandService {
         this.commandHost.viewContainerRef.clear();
     }
 
-    loadCommandComponent(component: Type<CommandOutput>, data = null): void {
+    loadCommandComponent(component: Type<CommandOutput>, data?: string | string[]): void {
         const componentRef = this.loadComponent(component);
-        componentRef.instance.data = data;
+        componentRef.instance.data = Array.isArray(data) ? data : [data];
     }
 
     loadInputComponent(): void {
