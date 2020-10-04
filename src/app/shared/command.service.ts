@@ -7,17 +7,20 @@ import {ContactCommandComponent} from '../terminal-body/commands/contact-command
 import {ManCommandComponent} from '../terminal-body/commands/man-command.component';
 import {CommandOutput} from '@shared/command-output';
 import {Subject} from 'rxjs';
+import {AboutMeCommandComponent} from '../terminal-body/commands/about-me-command.component';
 
 interface Command {
     aliases: string[];
     component?: Type<CommandOutput>;
+    data?: any;
     clear?: boolean;
 }
 
 export const commands: Command[] = [
     {
         aliases: ['echo', 'print'],
-        component: EchoCommandComponent
+        component: EchoCommandComponent,
+        data: {html: false}
     },
     {
         aliases: ['contact', 'email', 'linkedin'],
@@ -30,6 +33,10 @@ export const commands: Command[] = [
     {
         aliases: ['clear', 'reset'],
         clear: true
+    },
+    {
+        aliases: ['about-me', 'about'],
+        component: AboutMeCommandComponent
     }
 ];
 
@@ -49,7 +56,10 @@ export class CommandService {
         this.commandHost = value;
 
         this.loadCommandComponent(EchoCommandComponent,
-            `Welcome to AnnerSH 00.01\nLocal time is ${(new Date()).toISOString()}\nType 'help' to see available commands`);
+            `Welcome to AnnerSH 00.01<br>
+            Local time is ${(new Date()).toISOString()}<br>
+            Type 'help' to see available commands`,
+            {html: true});
         this.loadInputComponent();
 
         this.terminalService.commands$.subscribe((input: string) => {
@@ -73,9 +83,12 @@ export class CommandService {
         this.commandHost.viewContainerRef.clear();
     }
 
-    loadCommandComponent(component: Type<CommandOutput>, data?: string | string[]): void {
+    loadCommandComponent<T extends CommandOutput>(component: Type<T>,
+                                                  input?: string | string[],
+                                                  data?: any): void {
         const componentRef = this.loadComponent(component);
-        componentRef.instance.data = Array.isArray(data) ? data : [data];
+        componentRef.instance.input = Array.isArray(input) ? input : [input];
+        componentRef.instance.data = data;
     }
 
     loadInputComponent(): void {
@@ -101,7 +114,7 @@ export class CommandService {
             this.clearTerminal();
         }
         if (command.component) {
-            this.loadCommandComponent(command.component, args);
+            this.loadCommandComponent(command.component, args, command.data);
         }
     }
 }

@@ -1,3 +1,4 @@
 export abstract class CommandOutput {
-    data: string[];
+    input: string[];
+    data: any = {};
 }

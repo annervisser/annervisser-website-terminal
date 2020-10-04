@@ -10,6 +10,7 @@ import {UserInputComponent} from './terminal-body/user-input/user-input.componen
 import {FormsModule} from '@angular/forms';
 import {ContactCommandComponent} from './terminal-body/commands/contact-command.component';
 import {ManCommandComponent} from './terminal-body/commands/man-command.component';
+import {AboutMeCommandComponent} from './terminal-body/commands/about-me-command.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import {ManCommandComponent} from './terminal-body/commands/man-command.componen
         EchoCommandComponent,
         ContactCommandComponent,
         ManCommandComponent,
-        UserInputComponent
+        UserInputComponent,
+        AboutMeCommandComponent
     ],
     imports: [
         BrowserModule,

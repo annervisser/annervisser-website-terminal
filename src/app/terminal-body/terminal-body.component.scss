@@ -12,5 +12,8 @@
     border: 1px solid $terminal-border-color;
 
     height: $terminal-height - $terminal-top-bar-height;
+    overflow-x: hidden;
     overflow-y: scroll;
+
+    //word-break: break-all;
 }
