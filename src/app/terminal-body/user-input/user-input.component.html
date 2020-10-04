@@ -5,8 +5,7 @@
         <input #inputElement [(ngModel)]="currentInput" type="text" pattern="^[\n]" autofocus autocapitalize="off"
                autocomplete="off"
                (focusin)="onFocusChange(true)" (focusout)="onFocusChange(false)"
-               (keydown.enter)="submitCommand()" (keydown)="onKeyDown()"
-               (keydown.control.c)="cancelCommand()">
+               (keydown)="onKeyDown($event)">
     </label>
 
     <span class="visibleInput">

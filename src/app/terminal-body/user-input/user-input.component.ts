@@ -5,18 +5,18 @@ import {take, takeUntil} from 'rxjs/operators';
 @Component({
     selector: 'app-user-input',
     templateUrl: './user-input.component.html',
-    styleUrls: ['./user-input.component.scss'],
+    styleUrls: ['./user-input.component.scss']
 })
 export class UserInputComponent implements OnInit {
     @ViewChild('inputElement') inputEl: ElementRef<HTMLInputElement>;
     currentInput = '';
+    newInput = '';
     inputFinished = false;
     inputActive = false;
     private timeouts: number[] = [];
     private inputActiveTimeout: number;
 
-    constructor(private terminalService: TerminalService,
-                private elementRef: ElementRef) {
+    constructor(private terminalService: TerminalService) {
         this.terminalService.input$
             .pipe(takeUntil(this.terminalService.commands$))
             .pipe(take(1))
@@ -37,11 +37,33 @@ export class UserInputComponent implements OnInit {
             });
     }
 
+    // tslint:disable-next-line:variable-name
+    private _historyIndex = -1;
+
+    get historyIndex(): number {
+        return this._historyIndex;
+    }
+
+    set historyIndex(newValue: number) {
+        const oldValue = this._historyIndex;
+        const history = this.terminalService.inputHistory;
+
+        if (newValue < -1 || newValue >= history.length) {
+            return;
+        }
+
+        if (oldValue === -1) {
+            this.newInput = this.currentInput; // store currentinput locally
+        } else {
+            history.splice(oldValue, 1, this.currentInput); // Replace history entry with currentInput
+        }
+        this.currentInput = newValue === -1 ? this.newInput : history[newValue];
+        this._historyIndex = newValue;
+    }
+
     hasFocus = () => this.terminalService.hasFocus$;
 
     ngOnInit(): void {
-        this.elementRef.nativeElement.scrollIntoView();
-
         setTimeout(() => {
             this.terminalService.refocus$
                 .pipe(takeUntil(this.terminalService.commands$))
@@ -75,7 +97,32 @@ export class UserInputComponent implements OnInit {
         this.setTimeout(() => this.animateInput(input.slice(1), callback), 120);
     }
 
-    onKeyDown(): void {
+    onKeyDown(event: KeyboardEvent): void {
+        let preventDefault = true;
+        switch (event.key) {
+            case 'Enter':
+                return this.submitCommand();
+            case 'ArrowUp':
+            case 'Up':
+                this.historyIndex++;
+                break;
+            case 'ArrowDown':
+            case 'Down':
+                this.historyIndex--;
+                break;
+            case 'c':
+                if (event.ctrlKey) {
+                    return this.cancelCommand();
+                }
+                preventDefault = false;
+                break;
+            default:
+                preventDefault = false;
+        }
+        if (preventDefault) {
+            event.preventDefault();
+        }
+
         const el = this.inputEl.nativeElement;
         this.setTimeout(() => {
             // Set timeout so we can deal with the new value after a keypress
@@ -83,7 +130,6 @@ export class UserInputComponent implements OnInit {
                 el.setSelectionRange(el.selectionStart, el.selectionStart);
             }
         });
-
 
         clearTimeout(this.inputActiveTimeout);
         this.inputActive = true;

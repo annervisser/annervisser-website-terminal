@@ -6,6 +6,7 @@ import {TerminalService} from './terminal.service';
 import {ContactCommandComponent} from '../terminal-body/commands/contact-command.component';
 import {ManCommandComponent} from '../terminal-body/commands/man-command.component';
 import {CommandOutput} from '@shared/command-output';
+import {Subject} from 'rxjs';
 
 interface Command {
     aliases: string[];
@@ -37,12 +38,12 @@ export const commands: Command[] = [
     providedIn: 'root'
 })
 export class CommandService {
+    private commandHost: CommandHostDirective;
+    componentLoaded$ = new Subject<void>();
+
     constructor(private componentFactoryResolver: ComponentFactoryResolver,
                 private terminalService: TerminalService) {
     }
-
-    // tslint:disable-next-line:variable-name
-    private commandHost: CommandHostDirective;
 
     setCommandHost(value: CommandHostDirective): void {
         this.commandHost = value;
@@ -59,6 +60,27 @@ export class CommandService {
 
             this.loadInputComponent();
         });
+    }
+
+    loadComponent<T>(component: Type<T>): ComponentRef<T> {
+        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
+        const componentRef = this.commandHost.viewContainerRef.createComponent<T>(componentFactory);
+        this.componentLoaded$.next();
+        return componentRef;
+    }
+
+    clearTerminal(): void {
+        this.commandHost.viewContainerRef.clear();
+    }
+
+    loadCommandComponent(component: Type<CommandOutput>, data?: string | string[]): void {
+        const componentRef = this.loadComponent(component);
+        componentRef.instance.data = Array.isArray(data) ? data : [data];
+    }
+
+    loadInputComponent(): void {
+        this.loadComponent(UserInputComponent);
+        this.terminalService.refocus$.next();
     }
 
     private parseInput(input: string): void {
@@ -81,24 +103,5 @@ export class CommandService {
         if (command.component) {
             this.loadCommandComponent(command.component, args);
         }
-    }
-
-    loadComponent<T>(component: Type<T>): ComponentRef<T> {
-        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
-        return this.commandHost.viewContainerRef.createComponent<T>(componentFactory);
-    }
-
-    clearTerminal(): void {
-        this.commandHost.viewContainerRef.clear();
-    }
-
-    loadCommandComponent(component: Type<CommandOutput>, data?: string | string[]): void {
-        const componentRef = this.loadComponent(component);
-        componentRef.instance.data = Array.isArray(data) ? data : [data];
-    }
-
-    loadInputComponent(): void {
-        this.loadComponent(UserInputComponent);
-        this.terminalService.refocus$.next();
     }
 }
