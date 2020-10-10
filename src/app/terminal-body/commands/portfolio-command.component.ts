@@ -17,7 +17,7 @@ enum PortfolioCommands {
                 <h2>Portfolio</h2>
 
                 <h3><a appCommandLink="portfolio annervisser.nl">annervisser.nl</a>:</h3>
-                <p>Deze website. Een persoonlijke portfolio die eruit ziet en werkt als een terminal in Ubuntu.</p>
+                <p>Deze website. Een persoonlijk portfolio die eruit ziet en werkt als een terminal in Ubuntu.</p>
 
                 <h3><a appCommandLink="portfolio t-mobile">T-mobile auto-renew</a>:</h3>
                 <p>Python command-line programma dat automatisch 1GB aanvullers aanvraagt zodra de daglimiet bijna wordt
@@ -92,8 +92,58 @@ enum PortfolioCommands {
             <br>
             <a appCommandLink="portfolio">Terug naar overzicht</a>
         </div>
-        <!-- [ENGLISH] -->
-        <!-- <div [ngSwitch]="command" [class.limit-width]="command !== PortfolioCommands.Base">
+        <br>`,
+    styles: [`
+        :host {
+            display: block;
+            /*max-width: 450px;*/
+        }
+
+        .limit-width {
+            max-width: 450px;
+        }
+
+        h3 {
+            margin-bottom: 0;
+        }
+
+        h3 ~ p {
+            margin-top: 0;
+        }
+    `]
+})
+export class PortfolioCommandComponent extends CommandOutput implements OnInit {
+    PortfolioCommands = PortfolioCommands;
+    command: PortfolioCommands = PortfolioCommands.Base;
+
+    ngOnInit(): void {
+        switch (this.input[0] || null) {
+            case 'annervisser.nl':
+            case 'annervisser':
+            case 'website':
+                this.command = PortfolioCommands.AnnerVisser;
+                break;
+            case 'pws':
+            case 'profielwerkstuk':
+            case 'rail-simulation':
+            case 'railsimulation':
+                this.command = PortfolioCommands.PwsRailSimulation;
+                break;
+            case 'tmobile':
+            case 't-mobile':
+            case 'auto-renew':
+                this.command = PortfolioCommands.Tmobile;
+                break;
+            case 'gamebots':
+            case 'game-bots':
+                this.command = PortfolioCommands.GameBots;
+                break;
+        }
+    }
+}
+
+/*English template */
+/*        <div [ngSwitch]="command" [class.limit-width]="command !== PortfolioCommands.Base">
             <ng-container *ngSwitchCase="PortfolioCommands.Base">
                 <h2>Portfolio</h2>
                 <h2><a appCommandLink="portfolio annervisser.nl">annervisser.nl</a>:</h2>
@@ -150,45 +200,4 @@ enum PortfolioCommands {
         <div style="color: #999" *ngIf="command !== PortfolioCommands.Base">
             <br>
             <a appCommandLink="portfolio">Back to portfolio overview</a>
-        </div>-->
-        <br>`,
-    styles: [`
-        :host {
-            display: block;
-            /*max-width: 450px;*/
-        }
-
-        .limit-width {
-            max-width: 450px;
-        }
-    `]
-})
-export class PortfolioCommandComponent extends CommandOutput implements OnInit {
-    PortfolioCommands = PortfolioCommands;
-    command: PortfolioCommands = PortfolioCommands.Base;
-
-    ngOnInit(): void {
-        switch (this.input[0] || null) {
-            case 'annervisser.nl':
-            case 'annervisser':
-            case 'website':
-                this.command = PortfolioCommands.AnnerVisser;
-                break;
-            case 'pws':
-            case 'profielwerkstuk':
-            case 'rail-simulation':
-            case 'railsimulation':
-                this.command = PortfolioCommands.PwsRailSimulation;
-                break;
-            case 'tmobile':
-            case 't-mobile':
-            case 'auto-renew':
-                this.command = PortfolioCommands.Tmobile;
-                break;
-            case 'gamebots':
-            case 'game-bots':
-                this.command = PortfolioCommands.GameBots;
-                break;
-        }
-    }
-}
+        </div>*/

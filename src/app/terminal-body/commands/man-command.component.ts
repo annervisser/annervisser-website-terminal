@@ -4,8 +4,9 @@ import {CommandOutput} from '@shared/command-output';
 
 @Component({
     selector: 'app-man-command',
-    template: `Commands:<br>
+    template: `Commando's:<br>
     - <a appCommandLink="contact">contact</a>
+    <!--TODO finish man command-->
     <br>`,
     styles: []
 })

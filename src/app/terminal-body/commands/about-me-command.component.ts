@@ -8,7 +8,7 @@ import {CommandOutput} from '@shared/command-output';
         <p>
             Ik ben een enthousiaste Full stack software developer met uitgebreide ervaring in web development.
             Naast software maken spendeer ik mijn tijd graag met het up-to-date blijven met het laatste tech-nieuws,
-            knutselen met elektronica of me verdiepen in een nieuwe interesse.
+            knutselen met elektronica of met me verdiepen in een nieuwe interesse.
         </p>
 
         <b>Volgens een oud-collega</b><br>
