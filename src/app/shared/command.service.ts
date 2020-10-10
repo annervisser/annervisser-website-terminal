@@ -8,6 +8,8 @@ import {ManCommandComponent} from '../terminal-body/commands/man-command.compone
 import {CommandOutput} from '@shared/command-output';
 import {Subject} from 'rxjs';
 import {AboutMeCommandComponent} from '../terminal-body/commands/about-me-command.component';
+import {CurriculumVitaeCommandComponent} from '../terminal-body/commands/curriculum-vitae-command.component';
+import {PortfolioCommandComponent} from '../terminal-body/commands/portfolio-command.component';
 
 interface Command {
     aliases: string[];
@@ -37,6 +39,14 @@ export const commands: Command[] = [
     {
         aliases: ['about-me', 'about'],
         component: AboutMeCommandComponent
+    },
+    {
+        aliases: ['resume', 'curriculum-vitae', 'cv'],
+        component: CurriculumVitaeCommandComponent
+    },
+    {
+        aliases: ['portfolio', 'cases', 'projects'],
+        component: PortfolioCommandComponent
     }
 ];
 

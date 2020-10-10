@@ -2,10 +2,6 @@
 
 :host {
     display: block;
-    color: white;
-    font-family: 'Ubuntu Mono', monospace;
-    font-size: 13pt;
-    letter-spacing: 0.34px;
     padding: 1px;
 
     background-color: $terminal-body-color;
@@ -14,6 +10,4 @@
     height: $terminal-height - $terminal-top-bar-height;
     overflow-x: hidden;
     overflow-y: scroll;
-
-    //word-break: break-all;
 }

@@ -8,6 +8,22 @@ html, body {
     font-size: 16px;
 }
 
+.terminal {
+    color: white;
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 13pt;
+    letter-spacing: $letter-spacing;
+
+    &, p, h1, h2, h3, h4, h5, h6, pre, label {
+        font-size: 13pt;
+    }
+
+    h4, h5, h6 {
+        font-weight: normal;
+        margin-bottom: 0;
+    }
+}
+
 *, ::after, ::before {
     box-sizing: border-box;
 }
@@ -40,5 +56,41 @@ a {
 
     &::after {
         content: '>';
+    }
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+
+    &:not(.no-dashes) > li:before {
+        content: '- ';
+    }
+}
+
+table {
+    &, tr, td, th, tbody {
+        border: none !important;
+        padding: 0;
+        margin: 0;
+    }
+
+
+    &.row-line-breaks {
+        tr:not(:last-child) {
+            td, th {
+                padding-bottom: 1em;
+            }
+        }
+    }
+
+    td, th {
+        vertical-align: top;
+
+        //noinspection CssOverwrittenProperties
+        &:not(:last-child) {
+            padding-right: 1ch;
+            padding-right: calc(1ch + #{$letter-spacing});
+        }
     }
 }

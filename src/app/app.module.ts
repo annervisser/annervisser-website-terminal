@@ -11,6 +11,9 @@ import {FormsModule} from '@angular/forms';
 import {ContactCommandComponent} from './terminal-body/commands/contact-command.component';
 import {ManCommandComponent} from './terminal-body/commands/man-command.component';
 import {AboutMeCommandComponent} from './terminal-body/commands/about-me-command.component';
+import {CurriculumVitaeCommandComponent} from './terminal-body/commands/curriculum-vitae-command.component';
+import {CommandLinkDirective} from '@shared/command-link.directive';
+import {PortfolioCommandComponent} from './terminal-body/commands/portfolio-command.component';
 
 @NgModule({
     declarations: [
@@ -22,7 +25,10 @@ import {AboutMeCommandComponent} from './terminal-body/commands/about-me-command
         ContactCommandComponent,
         ManCommandComponent,
         UserInputComponent,
-        AboutMeCommandComponent
+        AboutMeCommandComponent,
+        CurriculumVitaeCommandComponent,
+        CommandLinkDirective,
+        PortfolioCommandComponent
     ],
     imports: [
         BrowserModule,

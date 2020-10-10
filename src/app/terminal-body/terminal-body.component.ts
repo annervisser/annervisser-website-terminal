@@ -19,8 +19,10 @@ export class TerminalBodyComponent implements OnInit {
 
     ngOnInit(): void {
         this.commandService.componentLoaded$.subscribe(() => {
-            const el = this.elementRef.nativeElement;
-            el.scrollTop = el.scrollHeight;
+            setTimeout(() => {
+                const el = this.elementRef.nativeElement;
+                el.scrollTop = el.scrollHeight;
+            });
         });
     }
 
