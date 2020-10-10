@@ -1,7 +1,3 @@
-<pre style="position: fixed; top: 0; left: 0;">
-    <b>debug:</b>
-    focus: {{terminalService.hasFocus$ | async}}
-</pre>
 <div class="wrapper">
     <div class="terminal" (mousedown)="$event.preventDefault(); focusInput()">
         <app-terminal-top-bar></app-terminal-top-bar>
