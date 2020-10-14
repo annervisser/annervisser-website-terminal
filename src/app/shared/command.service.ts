@@ -113,8 +113,8 @@ export class CommandService {
 
         const command = commands.find((c) => c.aliases.includes(commandParts[0]));
         if (!command) {
-            // TODO unknown command
-            this.loadCommandComponent(EchoCommandComponent, 'Unknown command');
+            this.loadCommandComponent(EchoCommandComponent, 'Onbekend commando');
+            this.loadCommandComponent(ManCommandComponent);
         } else {
             this.executeCommand(command, args);
         }
