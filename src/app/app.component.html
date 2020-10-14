@@ -1,4 +1,4 @@
-<div class="fixed-background">
+<div class="fixed-background noscript-hidden">
     <picture>
         <source srcset="assets/ubuntu-wallpaper.webp" type="image/webp">
         <source srcset="assets/ubuntu-wallpaper.jpg" type="image/jpg">
@@ -6,7 +6,7 @@
     </picture>
 </div>
 
-<div class="wrapper">
+<div class="wrapper noscript-hidden">
     <div class="terminal" (mousedown)="$event.preventDefault(); focusInput()">
         <app-terminal-top-bar></app-terminal-top-bar>
         <app-terminal-body></app-terminal-body>

@@ -31,7 +31,7 @@ import {PortfolioCommandComponent} from './terminal-body/commands/portfolio-comm
         PortfolioCommandComponent
     ],
     imports: [
-        BrowserModule,
+        BrowserModule.withServerTransition({appId: 'serverApp'}),
         FormsModule
     ],
     providers: [],

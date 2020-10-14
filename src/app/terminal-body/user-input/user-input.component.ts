@@ -14,7 +14,7 @@ export class UserInputComponent implements OnInit {
     inputFinished = false;
     inputActive = false;
     private timeouts: number[] = [];
-    private inputActiveTimeout: number;
+    private inputActiveTimeout: any;
 
     constructor(private terminalService: TerminalService) {
         this.terminalService.input$
