@@ -42,6 +42,10 @@ html, body {
     color: #999;
 }
 
+noscript .links, .noscript .links {
+    display: none;
+}
+
 a {
     &, &:visited {
         color: inherit;

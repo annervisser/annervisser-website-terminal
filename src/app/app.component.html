@@ -5,9 +5,27 @@
         <img src="assets/ubuntu-wallpaper.jpg" alt="Ubuntu wallpaper">
     </picture>
 </div>
+
 <div class="wrapper">
     <div class="terminal" (mousedown)="$event.preventDefault(); focusInput()">
         <app-terminal-top-bar></app-terminal-top-bar>
         <app-terminal-body></app-terminal-body>
     </div>
 </div>
+
+<noscript class="noscript">
+    <h1>Over mij</h1>
+    <app-about-me-command></app-about-me-command>
+    <h1>Contact</h1>
+    <app-contact-command></app-contact-command>
+    <h1>Curriculum Vitae</h1>
+    <app-curriculum-vitae-command></app-curriculum-vitae-command>
+    <app-curriculum-vitae-command [input]="['work']"></app-curriculum-vitae-command>
+    <app-curriculum-vitae-command [input]="['education']"></app-curriculum-vitae-command>
+    <app-curriculum-vitae-command [input]="['skills']"></app-curriculum-vitae-command>
+    <h1>Portfolio</h1>
+    <app-portfolio-command [input]="['annervisser.nl']"></app-portfolio-command>
+    <app-portfolio-command [input]="['profielwerkstuk']"></app-portfolio-command>
+    <app-portfolio-command [input]="['t-mobile']"></app-portfolio-command>
+    <app-portfolio-command [input]="['gamebots']"></app-portfolio-command>
+</noscript>

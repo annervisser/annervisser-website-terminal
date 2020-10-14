@@ -23,38 +23,40 @@ enum CvCommands {
             </ng-container>
 
             <ng-container *ngSwitchCase="CvCommands.Experience">
+                <h2>Werkervaring</h2>
                 <b>Persistence IT, Zwolle</b> jun 2017 – sep 2020<br>
                 Full stack developer
             </ng-container>
 
             <ng-container *ngSwitchCase="CvCommands.Skills">
-                <h2>Software ontwikkeling</h2>
+                <h2>Vaardigheden</h2>
+                <h3>Software ontwikkeling</h3>
                 Java Spring, Angular2, Symfony, Laravel, Python Tornado, NativeScript, Mendix<br>
                 <br>
-                <h2>Software</h2>
+                <h3>Software</h3>
                 Software architectuur, Database design, SCRUM, Informatiebeveiliging, Linux systeembeheer,
                 Application Monitoring
             </ng-container>
 
             <ng-container *ngSwitchCase="CvCommands.Education">
-                <b>Opleiding</b><br>
+                <h2>Opleiding</h2><br>
                 <table class="row-line-breaks">
                     <tr>
                         <td>2017:</td>
                         <td>
-                            <b>Propedeuse HBO ICT</b><br>
+                            <h3>Propedeuse HBO ICT</h3><br>
                             Windesheim, Zwolle
                         </td>
                     </tr>
                     <tr>
                         <td>2016:</td>
-                        <td><b>VWO Informatica</b><br>
+                        <td><h3>VWO Informatica</h3><br>
                             JenaXL, Zwolle
                         </td>
                     </tr>
                     <tr>
                         <td>2016:</td>
-                        <td><b>Havo</b><br>
+                        <td><h3>Havo</h3><br>
                             JenaXL, Zwolle
                         </td>
                     </tr>

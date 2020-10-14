@@ -10,7 +10,7 @@ enum PortfolioCommands {
 }
 
 @Component({
-    selector: 'app-curriculum-vitae-command',
+    selector: 'app-portfolio-command',
     template: `
         <div [ngSwitch]="command" [class.limit-width]="command !== PortfolioCommands.Base">
             <ng-container *ngSwitchCase="PortfolioCommands.Base">
@@ -31,6 +31,7 @@ enum PortfolioCommands {
             </ng-container>
 
             <ng-container *ngSwitchCase="PortfolioCommands.AnnerVisser">
+                <h2>Annervisser.nl - Ubuntu terminal</h2>
                 <p>
                     Een pixel-perfect kopie van Ubuntu's gnome-terminal. Ontwikkeld in Angular zonder back-end. Probeert
                     binnen de browser de ervaring van de terminal zo goed mogelijk na te bootsen. Extra functionaliteit
@@ -45,6 +46,7 @@ enum PortfolioCommands {
             </ng-container>
 
             <ng-container *ngSwitchCase="PortfolioCommands.Tmobile">
+                <h2>T-mobile data auto-renew</h2>
                 <p>
                     Een python applicatie die de gebruikte data opvraagt, en wanneer deze bijna de limiet
                     bereikt automatisch een 1GB aanvuller aanvraagt. De gebruikte data wordt met regelmatige tussenpozen
@@ -61,6 +63,7 @@ enum PortfolioCommands {
             </ng-container>
 
             <ng-container *ngSwitchCase="PortfolioCommands.PwsRailSimulation">
+                <h2>Profielwerkstuk - rail simulatie</h2>
                 <p>
                     Software geschreven in C# met Monogame, welke een rail systeem en de treinen daarop simuleert.
                     De applicatie is vergelijkbaar met hoe de applicatie van ProRail er uit ziet, waar seinen en wissels
@@ -69,6 +72,7 @@ enum PortfolioCommands {
             </ng-container>
 
             <ng-container *ngSwitchCase="PortfolioCommands.GameBots">
+                <h2>Game bots</h2>
                 <p>
                     Een set applicatie voor verschillende spellen, allemaal geschreven in C#. Deze programma's lossen
                     de spellen zo snel en optimaal mogelijk op.
