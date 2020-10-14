@@ -2,11 +2,19 @@
     white-space: normal;
 }
 
+$input-disabled-width: 800px;
+
 .hiddenInput {
     position: fixed;
     left: -600px;
     overflow: hidden;
     width: 0;
+
+    @media (orientation: portrait) and (max-width: $input-disabled-width) {
+        input {
+            display: none;
+        }
+    }
 }
 
 .visibleInput {
@@ -28,11 +36,13 @@
             animation: none;
         }
 
-        &:not(.focus) {
-            animation: none;
-            -webkit-text-fill-color: transparent;
-            -webkit-text-stroke-width: 1px;
-            -webkit-text-stroke-color: white;
+        @media (orientation: portrait) and (min-width: $input-disabled-width) {
+            &:not(.focus) {
+                animation: none;
+                -webkit-text-fill-color: transparent;
+                -webkit-text-stroke-width: 1px;
+                -webkit-text-stroke-color: white;
+            }
         }
     }
 }
