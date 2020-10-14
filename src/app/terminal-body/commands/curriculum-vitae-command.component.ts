@@ -63,8 +63,13 @@ enum CvCommands {
                 </table>
             </ng-container>
         </div>
+        <div>
+            <p>
+                <b>Voor een volledig beeld,
+                    <a href="assets/CV%20Anner%20Visser.pdf" target="_blank">download mijn CV</a></b>
+            </p>
+        </div>
         <div class="links">
-            <br>
             <h4>Lees meer over:</h4>
             <ul>
                 <li [hidden]="command === CvCommands.Experience"><a appCommandLink="cv experience">Werkervaring</a></li>
@@ -78,6 +83,11 @@ enum CvCommands {
         :host {
             display: block;
             max-width: 450px;
+        }
+
+        table h3 {
+            display: inline-block;
+            margin: 0;
         }
     `]
 })
