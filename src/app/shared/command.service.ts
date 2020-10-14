@@ -66,11 +66,12 @@ export class CommandService {
         this.commandHost = value;
 
         this.loadCommandComponent(EchoCommandComponent,
-            `Welcome to AnnerSH 00.01<br>
-            Local time is ${(new Date()).toISOString()}<br>
-            Type 'help' to see available commands`,
+            `AnnerSH v0.01<br>
+            Huidige tijd is ${(new Date()).toISOString()}<br>
+            Type 'help' om beschikbare commando's te zien`,
             {html: true});
         this.loadInputComponent();
+        setTimeout(() => this.terminalService.input$.next('help'), 200);
 
         this.terminalService.commands$.subscribe((input: string) => {
             input = input ? input.trim() : '';

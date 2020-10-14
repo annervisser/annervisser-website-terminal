@@ -8,9 +8,31 @@
 
 .terminal {
     box-shadow: black 0 0 20px;
-    width: $terminal-width;
-    height: $terminal-height;
+    width: 100vw;
+    height: 100vh;
+    max-width: $terminal-width;
+    max-height: $terminal-height;
     border-radius: 6px 6px 0 0;
     overflow: hidden;
+    @media (max-width: $terminal-width) {
+        max-height: none;
+    }
 }
 
+.fixed-background {
+    z-index: -1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    picture, img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 100%;
+        min-height: 100%;
+    }
+}

@@ -4,10 +4,18 @@ import {CommandOutput} from '@shared/command-output';
 
 @Component({
     selector: 'app-man-command',
-    template: `Commando's:<br>
-    - <a appCommandLink="contact">contact</a>
-    <!--TODO finish man command-->
-    <br>`,
+    template: `
+        <p>Type een commando of klik op een &lt;link&gt; om een commando uit te voeren.</p>
+        Beschikbare commando's:<br>
+        <ul>
+            <li><a appCommandLink="curriculum-vitae">curriculum-vitae</a></li>
+            <li><a appCommandLink="portfolio">portfolio</a></li>
+            <li><a appCommandLink="about-me">about-me</a></li>
+            <li><a appCommandLink="contact">contact</a></li>
+            <li><a appCommandLink="help">help</a></li>
+        </ul>
+        <br>
+    `,
     styles: []
 })
 export class ManCommandComponent extends CommandOutput {

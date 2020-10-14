@@ -21,7 +21,9 @@ export class UserInputComponent implements OnInit {
             .pipe(takeUntil(this.terminalService.commands$))
             .pipe(take(1))
             .subscribe((command: string) => {
-                this.inputEl.nativeElement.disabled = true;
+                if (this.inputEl) {
+                    this.inputEl.nativeElement.disabled = true;
+                }
 
                 let finishCommandPromise = Promise.resolve();
                 if (!this.inputFinished) {

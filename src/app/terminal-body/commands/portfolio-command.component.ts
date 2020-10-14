@@ -88,21 +88,18 @@ enum PortfolioCommands {
                 </p>
             </ng-container>
         </div>
-        <div style="color: #999" *ngIf="command !== PortfolioCommands.Base">
+        <div class="links">
             <br>
-            <a appCommandLink="portfolio">Terug naar overzicht</a>
+            <ul>
+                <li *ngIf="command !== PortfolioCommands.Base">
+                    <a appCommandLink="portfolio">Terug naar portfolio overzicht</a>
+                </li>
+                <li><a appCommandLink="help">Terug naar alle commando's</a></li>
+            </ul>
+            <br>
         </div>
         <br>`,
     styles: [`
-        :host {
-            display: block;
-            /*max-width: 450px;*/
-        }
-
-        .limit-width {
-            max-width: 450px;
-        }
-
         h3 {
             margin-bottom: 0;
         }

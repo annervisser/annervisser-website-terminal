@@ -61,13 +61,14 @@ enum CvCommands {
                 </table>
             </ng-container>
         </div>
-        <div style="color: #999">
+        <div class="links">
             <br>
             <h4>Lees meer over:</h4>
             <ul>
                 <li [hidden]="command === CvCommands.Experience"><a appCommandLink="cv experience">Werkervaring</a></li>
                 <li [hidden]="command === CvCommands.Skills"><a appCommandLink="cv skills">Vaardigheden</a></li>
-                <li [hidden]="command === CvCommands.Education"><a appCommandLink="cv education">Opleiding</a></li>
+                <li [hidden]="command === CvCommands.Education"><a appCommandLink="cv education">Opleiding</a><br></li>
+                <li><a appCommandLink="help">Alle commando's</a></li>
             </ul>
         </div>
         <br>`,

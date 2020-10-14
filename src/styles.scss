@@ -38,6 +38,10 @@ html, body {
     color: $terminal-font-blue;
 }
 
+.links {
+    color: #999;
+}
+
 a {
     &, &:visited {
         color: inherit;
@@ -65,6 +69,13 @@ ul {
 
     &:not(.no-dashes) > li:before {
         content: '- ';
+    }
+
+    @media (max-width: 1200px) and (orientation: landscape),
+    (max-width: 800px) and (orientation: portrait) {
+        li {
+            margin-bottom: 1rem;
+        }
     }
 }
 

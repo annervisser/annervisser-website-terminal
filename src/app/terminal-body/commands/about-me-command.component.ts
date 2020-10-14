@@ -18,6 +18,10 @@ import {CommandOutput} from '@shared/command-output';
             eigen  maakt.  Hij  weet  zijn  weg  te  vinden  in ingewikkelde code en is daarnaast een verrijking voor de
             teamspirit.
         </p>
+        <div class="links">
+            <br>
+            <a appCommandLink="help">Alle commando's</a>
+        </div>
     <br>`,
     styles: [`
         :host {
