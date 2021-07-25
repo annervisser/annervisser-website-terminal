@@ -16,7 +16,7 @@ enum CvCommands {
                 <h2>Anner Visser</h2>
                 <ul>
                     <li>Woonplaats: Zwolle</li>
-                    <li>Leeftijd: 20 (born 26-03-2000)</li>
+                    <li>Leeftijd: 21 (born 26-03-2000)</li>
                     <li>Telefoon: <a href="tel:0031611263137">06 11263137</a></li>
                     <li>E-mail: <a href="mailto:mail@annervisser.nl">mail@annervisser.nl</a></li>
                 </ul>
@@ -25,7 +25,10 @@ enum CvCommands {
             <ng-container *ngSwitchCase="CvCommands.Experience">
                 <h2>Werkervaring</h2>
                 <b>Persistence IT, Zwolle</b> jun 2017 – sep 2020<br>
-                Full stack developer
+			Full stack developer
+		<br><br>
+		<b>Scienta, Harderwijk</b> dec 2020 - heden<br>
+			Full stack developer
             </ng-container>
 
             <ng-container *ngSwitchCase="CvCommands.Skills">
