@@ -1,15 +1,15 @@
-import {ComponentFactoryResolver, ComponentRef, Injectable, Type} from '@angular/core';
-import {CommandHostDirective} from './command-host.directive';
-import {EchoCommandComponent} from '../terminal-body/commands/echo-command.component';
-import {UserInputComponent} from '../terminal-body/user-input/user-input.component';
-import {TerminalService} from './terminal.service';
-import {ContactCommandComponent} from '../terminal-body/commands/contact-command.component';
-import {ManCommandComponent} from '../terminal-body/commands/man-command.component';
-import {CommandOutput} from '@shared/command-output';
-import {Subject} from 'rxjs';
-import {AboutMeCommandComponent} from '../terminal-body/commands/about-me-command.component';
-import {CurriculumVitaeCommandComponent} from '../terminal-body/commands/curriculum-vitae-command.component';
-import {PortfolioCommandComponent} from '../terminal-body/commands/portfolio-command.component';
+import { ComponentRef, Injectable, Type } from '@angular/core';
+import { CommandHostDirective } from './command-host.directive';
+import { EchoCommandComponent } from '../terminal-body/commands/echo-command.component';
+import { UserInputComponent } from '../terminal-body/user-input/user-input.component';
+import { TerminalService } from './terminal.service';
+import { ContactCommandComponent } from '../terminal-body/commands/contact-command.component';
+import { ManCommandComponent } from '../terminal-body/commands/man-command.component';
+import { CommandOutput } from '@shared/command-output';
+import { Subject } from 'rxjs';
+import { AboutMeCommandComponent } from '../terminal-body/commands/about-me-command.component';
+import { CurriculumVitaeCommandComponent } from '../terminal-body/commands/curriculum-vitae-command.component';
+import { PortfolioCommandComponent } from '../terminal-body/commands/portfolio-command.component';
 
 interface Command {
     aliases: string[];
@@ -55,11 +55,10 @@ export const commands: Command[] = [
     providedIn: 'root'
 })
 export class CommandService {
+    componentLoaded$: Subject<void> = new Subject<void>();
     private commandHost: CommandHostDirective;
-    componentLoaded$ = new Subject<void>();
 
-    constructor(private componentFactoryResolver: ComponentFactoryResolver,
-                private terminalService: TerminalService) {
+    constructor(private terminalService: TerminalService) {
     }
 
     setCommandHost(value: CommandHostDirective): void {
@@ -84,8 +83,7 @@ export class CommandService {
     }
 
     loadComponent<T>(component: Type<T>): ComponentRef<T> {
-        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
-        const componentRef = this.commandHost.viewContainerRef.createComponent<T>(componentFactory);
+        const componentRef = this.commandHost.viewContainerRef.createComponent(component);
         this.componentLoaded$.next();
         return componentRef;
     }

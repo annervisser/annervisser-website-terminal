@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {CommandOutput} from '@shared/command-output';
+import { Component } from '@angular/core';
+import { CommandOutput } from '@shared/command-output';
 
 @Component({
     selector: 'app-about-me-command',
@@ -14,15 +14,15 @@ import {CommandOutput} from '@shared/command-output';
         <b>Volgens een oud-collega</b><br>
         <p>
             Full stack developer met oog voor detail.<br>
-            Ondanks zijn jonge leeftijd heeft Anner al veel  ervaring  met software&shy;ontwikkeling. Een  sympathieke  en  slimme  jongen  die  nieuwe  technieken  snel  oppakt  en  zich
-            eigen  maakt.  Hij  weet  zijn  weg  te  vinden  in ingewikkelde code en is daarnaast een verrijking voor de
+            Ondanks zijn jonge leeftijd heeft Anner al veel ervaring met software&shy;ontwikkeling. Een sympathieke en slimme jongen die nieuwe technieken snel oppakt en zich
+            eigen maakt. Hij weet zijn weg te vinden in ingewikkelde code en is daarnaast een verrijking voor de
             teamspirit.
         </p>
         <div class="links">
             <br>
             <a appCommandLink="help">Alle commando's</a>
         </div>
-    <br>`,
+        <br>`,
     styles: [`
         :host {
             display: block;

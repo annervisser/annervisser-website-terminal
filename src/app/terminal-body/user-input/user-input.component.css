@@ -1,0 +1,47 @@
+:host {
+    white-space: normal;
+    --input-disabled-width: 800px;
+}
+
+.hiddenInput {
+    position: fixed;
+    left: -600px;
+    overflow: hidden;
+    width: 0;
+}
+
+@media (orientation: portrait) and (max-width: var(--input-disabled-width)) {
+    .hiddenInput input {
+        display: none;
+    }
+}
+
+.visibleInput {
+    position: relative;
+}
+
+.visibleInput .cursor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: blink-animation 1.2s steps(2, start) infinite;
+}
+
+.visibleInput .cursor.inputActive {
+    animation: none;
+}
+
+@keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+
+@media (orientation: portrait) and (min-width: var(--input-disabled-width)) {
+    .visibleInput .cursor:not(.focus) {
+        animation: none;
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: white;
+    }
+}

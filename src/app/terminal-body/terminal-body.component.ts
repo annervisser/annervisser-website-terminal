@@ -1,11 +1,11 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {CommandHostDirective} from '@shared/command-host.directive';
-import {CommandService} from '@shared/command.service';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { CommandHostDirective } from '@shared/command-host.directive';
+import { CommandService } from '@shared/command.service';
 
 @Component({
     selector: 'app-terminal-body',
     template: '<ng-template appCommandHost></ng-template><div style="height: 1px;"></div>',
-    styleUrls: ['./terminal-body.component.scss']
+    styleUrls: ['./terminal-body.component.css']
 })
 export class TerminalBodyComponent implements OnInit {
     @ViewChild(CommandHostDirective, {static: true})

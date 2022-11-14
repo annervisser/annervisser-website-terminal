@@ -1,11 +1,11 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {TerminalService} from '@shared/terminal.service';
-import {take, takeUntil} from 'rxjs/operators';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { TerminalService } from '@shared/terminal.service';
+import { take, takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'app-user-input',
     templateUrl: './user-input.component.html',
-    styleUrls: ['./user-input.component.scss']
+    styleUrls: ['./user-input.component.css']
 })
 export class UserInputComponent implements OnInit {
     @ViewChild('inputElement') inputEl: ElementRef<HTMLInputElement>;
@@ -28,7 +28,7 @@ export class UserInputComponent implements OnInit {
                 let finishCommandPromise = Promise.resolve();
                 if (!this.inputFinished) {
                     this.currentInput = ''; // TODO instead of removing current input, act as if Ctrl+C was pressed
-                    finishCommandPromise = new Promise<void>(handle => this.animateInput(command, handle));
+                    finishCommandPromise = new Promise<void>(handle => this.animateInput(command, () => handle()));
                 }
 
                 finishCommandPromise.then(() => {
@@ -55,7 +55,7 @@ export class UserInputComponent implements OnInit {
         }
 
         if (oldValue === -1) {
-            this.newInput = this.currentInput; // store currentinput locally
+            this.newInput = this.currentInput; // store currentInput locally
         } else {
             history.splice(oldValue, 1, this.currentInput); // Replace history entry with currentInput
         }
@@ -127,7 +127,7 @@ export class UserInputComponent implements OnInit {
 
         const el = this.inputEl.nativeElement;
         this.setTimeout(() => {
-            // Set timeout so we can deal with the new value after a keypress
+            // Set timeout, so we can deal with the new value after a keypress
             if (el.selectionStart !== el.selectionEnd) { // prevent selection
                 el.setSelectionRange(el.selectionStart, el.selectionStart);
             }

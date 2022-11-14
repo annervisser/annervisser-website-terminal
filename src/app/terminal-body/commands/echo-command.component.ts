@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {CommandOutput} from '@shared/command-output';
+import { Component } from '@angular/core';
+import { CommandOutput } from '@shared/command-output';
 
 @Component({
     selector: 'app-echo-command',

@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {CommandOutput} from '@shared/command-output';
+import { Component } from '@angular/core';
+import { CommandOutput } from '@shared/command-output';
 
 @Component({
     selector: 'app-contact-command',
@@ -8,8 +8,8 @@ import {CommandOutput} from '@shared/command-output';
     of<br>
     <a href="https://www.linkedin.com/in/annervisser" rel="noopener" target="_blank">LinkedIn</a>
     <div class="links">
-            <br>
-            <a appCommandLink="help">Alle commando's</a>
+        <br>
+        <a appCommandLink="help">Alle commando's</a>
     </div>
     <br>`,
     styles: []
