@@ -8,7 +8,7 @@ const HISTORY_SIZE = 999; // bash's default on ubuntu
     providedIn: 'root'
 })
 export class TerminalService {
-    refocus$: Subject<null> = new ReplaySubject<null>(1);
+    refocus$: Subject<void> = new ReplaySubject<void>(1);
     hasFocus$: Subject<boolean> = new Subject<boolean>();
     commands$: Subject<string> = new Subject<string>();
     input$: Subject<string> = new Subject<string>();
