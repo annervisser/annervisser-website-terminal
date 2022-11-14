@@ -5,7 +5,7 @@ import {take, takeUntil} from 'rxjs/operators';
 @Component({
     selector: 'app-user-input',
     templateUrl: './user-input.component.html',
-    styleUrls: ['./user-input.component.scss']
+    styleUrls: ['./user-input.component.css']
 })
 export class UserInputComponent implements OnInit {
     @ViewChild('inputElement') inputEl: ElementRef<HTMLInputElement>;
