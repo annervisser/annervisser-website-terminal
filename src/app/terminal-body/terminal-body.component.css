@@ -6,7 +6,7 @@
     background-color: var(--terminal-body-color);
     border: 1px solid var(--terminal-border-color);
 
-    height: var(--terminal-height) - var(--terminal-top-bar-height); /* older browsers*/
+    height: var(--terminal-height) calc(-1 * var(--terminal-top-bar-height)); /* older browsers*/
     height: calc(100% - var(--terminal-top-bar-height));
     overflow-x: hidden;
     overflow-y: scroll;

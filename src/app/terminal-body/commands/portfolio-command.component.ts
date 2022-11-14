@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {CommandOutput} from '@shared/command-output';
+import { Component, OnInit } from '@angular/core';
+import { CommandOutput } from '@shared/command-output';
 
 enum PortfolioCommands {
     Base,
@@ -38,7 +38,8 @@ enum PortfolioCommands {
                     zorgt voor een goede ervaring voor iedereen, ook zonder terminal-ervaring.
                 </p>
                 <p>
-                    De terminal werkt door middel van Angular's <i>Dynamic component loading</i>, wat ervoor zorgt dat de
+                    De terminal werkt door middel van Angular's
+                    <i>Dynamic component loading</i>, wat ervoor zorgt dat de
                     terminal input en output volledig binnen Angular components kunnen worden geschreven.<br>
                     Uitgebreid gebruik van RXJS Subjects zorgt ervoor dat events door de applicatie kunnen worden
                     verstuurd en verwerkt zonder dat componenten closely coupled zijn.

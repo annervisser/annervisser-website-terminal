@@ -5,14 +5,16 @@
         <input #inputElement [(ngModel)]="currentInput" type="text" pattern="^[\n]" autofocus autocapitalize="off"
                autocomplete="off"
                (focusin)="onFocusChange(true)" (focusout)="onFocusChange(false)"
-               (keydown)="onKeyDown($event)">
+               (keydown)="onKeyDown($event)"
+        >
     </label>
 
     <span class="visibleInput">
         <ng-container *ngTemplateOutlet="currentInputDisplay"></ng-container>
         <span class="cursor"
               [class.focus]="hasFocus() | async" [class.inputActive]="inputElement.disabled || inputActive"
-              [style.left.px]="inputElement.selectionStart * 9">█
+              [style.left.px]="inputElement.selectionStart * 9"
+        >█
             <!--9px seems to be the exact right amount for one character, since ch (width of 0) works out to be 8.67 and the letter-spacing is 0.34px;-->
         </span>
         <!--TODO: text should show through cursor in bg-colour -->

@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {ReplaySubject, Subject} from 'rxjs';
-import {filter} from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { ReplaySubject, Subject } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 const HISTORY_SIZE = 999; // bash's default on ubuntu
 

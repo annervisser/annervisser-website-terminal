@@ -1,4 +1,4 @@
-import {Directive, Input} from '@angular/core';
+import { Directive, Input } from '@angular/core';
 
 @Directive()
 // tslint:disable-next-line:directive-class-suffix

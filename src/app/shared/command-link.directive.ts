@@ -1,5 +1,5 @@
-import {Directive, HostBinding, HostListener, Input} from '@angular/core';
-import {TerminalService} from '@shared/terminal.service';
+import { Directive, HostBinding, HostListener, Input } from '@angular/core';
+import { TerminalService } from '@shared/terminal.service';
 
 @Directive({
     exportAs: 'appCommandLink',

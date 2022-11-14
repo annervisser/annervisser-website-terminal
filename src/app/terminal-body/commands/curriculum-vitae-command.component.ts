@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {CommandOutput} from '@shared/command-output';
+import { Component, OnInit } from '@angular/core';
+import { CommandOutput } from '@shared/command-output';
 
 enum CvCommands {
     Base,
@@ -25,10 +25,10 @@ enum CvCommands {
             <ng-container *ngSwitchCase="CvCommands.Experience">
                 <h2>Werkervaring</h2>
                 <b>Persistence IT, Zwolle</b> jun 2017 – sep 2020<br>
-			Full stack developer
-		<br><br>
-		<b>Scienta, Harderwijk</b> dec 2020 - heden<br>
-			Full stack developer
+                Full stack developer
+                <br><br>
+                <b>Scienta, Harderwijk</b> dec 2020 - heden<br>
+                Full stack developer
             </ng-container>
 
             <ng-container *ngSwitchCase="CvCommands.Skills">
@@ -69,7 +69,7 @@ enum CvCommands {
         <div>
             <p>
                 <b>Voor een volledig beeld,
-                    <a href="assets/CV%20Anner%20Visser.pdf" target="_blank">download mijn CV</a></b>
+                    <a href="assets/CV Anner Visser.pdf" target="_blank">download mijn CV</a></b>
             </p>
         </div>
         <div class="links">

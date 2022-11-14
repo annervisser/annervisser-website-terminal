@@ -1,6 +1,6 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {CommandHostDirective} from '@shared/command-host.directive';
-import {CommandService} from '@shared/command.service';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { CommandHostDirective } from '@shared/command-host.directive';
+import { CommandService } from '@shared/command.service';
 
 @Component({
     selector: 'app-terminal-body',
