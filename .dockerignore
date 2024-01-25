@@ -1,0 +1,9 @@
+*
+
+!src
+!.browserslistrc
+!angular.json
+!package.json
+!package-lock.json
+!server.ts
+!tsconfig.*
