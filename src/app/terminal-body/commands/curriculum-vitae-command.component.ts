@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CommandOutput } from '@shared/command-output';
+import {Component, OnInit} from '@angular/core';
+import {CommandOutput} from '@shared/command-output';
 
 enum CvCommands {
     Base,
@@ -16,8 +16,7 @@ enum CvCommands {
                 <h2>Anner Visser</h2>
                 <ul>
                     <li>Woonplaats: Zwolle</li>
-                    <li>Leeftijd: 21 (born 26-03-2000)</li>
-                    <li>Telefoon: <a href="tel:0031611263137">06 11263137</a></li>
+                    <li>Leeftijd: {{ age }} (born 26-03-2000)</li>
                     <li>E-mail: <a href="mailto:mail@annervisser.nl">mail@annervisser.nl</a></li>
                 </ul>
             </ng-container>
@@ -98,6 +97,7 @@ export class CurriculumVitaeCommandComponent extends CommandOutput implements On
     CvCommands = CvCommands;
     command: CvCommands = CvCommands.Base;
 
+    age = Math.abs(new Date(Date.now() - Date.parse('2000-03-26')).getUTCFullYear() - 1970);
     ngOnInit(): void {
         switch (this.input[0] || null) {
             case 'experience':
